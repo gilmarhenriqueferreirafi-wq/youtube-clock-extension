@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerar Ícones - YouTube Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .icon-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerar Ícones da Extensão</h1>
+    <p>Abra este arquivo no navegador e clique nos botões para baixar os ícones</p>
+    
+    <div class="icon-container">
+        <h3>Ícone 16x16</h3>
+        <canvas id="icon16" width="16" height="16"></canvas>
+        <br>
+        <button onclick="downloadIcon('icon16', 'icon16.png')">Baixar icon16.png</button>
+    </div>
+    
+    <div class="icon-container">
+        <h3>Ícone 48x48</h3>
+        <canvas id="icon48" width="48" height="48"></canvas>
+        <br>
+        <button onclick="downloadIcon('icon48', 'icon48.png')">Baixar icon48.png</button>
+    </div>
+    
+    <div class="icon-container">
+        <h3>Ícone 128x128</h3>
+        <canvas id="icon128" width="128" height="128"></canvas>
+        <br>
+        <button onclick="downloadIcon('icon128', 'icon128.png')">Baixar icon128.png</button>
+    </div>
+    
+    <div class="icon-container">
+        <button onclick="downloadAll()" style="background: #4CAF50;">Baixar Todos</button>
+    </div>
+    
+    <script>
+        function drawIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 1, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Clock face
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - size/8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Clock markers
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = Math.max(1, size / 32);
+            ctx.lineCap = 'round';
+            
+            // Top
+            ctx.beginPath();
+            ctx.moveTo(size/2, size/8);
+            ctx.lineTo(size/2, size/6);
+            ctx.stroke();
+            
+            // Bottom
+            ctx.beginPath();
+            ctx.moveTo(size/2, size - size/8);
+            ctx.lineTo(size/2, size - size/6);
+            ctx.stroke();
+            
+            // Left
+            ctx.beginPath();
+            ctx.moveTo(size/8, size/2);
+            ctx.lineTo(size/6, size/2);
+            ctx.stroke();
+            
+            // Right
+            ctx.beginPath();
+            ctx.moveTo(size - size/8, size/2);
+            ctx.lineTo(size - size/6, size/2);
+            ctx.stroke();
+            
+            // Hour hand
+            ctx.lineWidth = Math.max(1, size / 16);
+            ctx.beginPath();
+            ctx.moveTo(size/2, size/2);
+            ctx.lineTo(size/2, size/3);
+            ctx.stroke();
+            
+            // Minute hand
+            ctx.lineWidth = Math.max(1, size / 24);
+            ctx.beginPath();
+            ctx.moveTo(size/2, size/2);
+            ctx.lineTo(size/2 + size/6, size/2);
+            ctx.stroke();
+            
+            // Center dot
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, Math.max(1, size / 24), 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        function downloadAll() {
+            downloadIcon('icon16', 'icon16.png');
+            setTimeout(() => downloadIcon('icon48', 'icon48.png'), 200);
+            setTimeout(() => downloadIcon('icon128', 'icon128.png'), 400);
+        }
+        
+        // Draw all icons when page loads
+        window.onload = function() {
+            drawIcon('icon16', 16);
+            drawIcon('icon48', 48);
+            drawIcon('icon128', 128);
+        };
+    </script>
+</body>
+</html>

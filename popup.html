@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clock Settings</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⏰ YouTube Clock</h1>
+        <p class="subtitle">Customize seu relógio flutuante</p>
+        
+        <div class="settings-group">
+            <label class="setting-label">
+                <input type="checkbox" id="format24h" checked>
+                <span>Formato 24 horas</span>
+            </label>
+        </div>
+        
+        <div class="settings-group">
+            <label class="setting-label">
+                <input type="checkbox" id="showSeconds" checked>
+                <span>Mostrar segundos</span>
+            </label>
+        </div>
+        
+        <div class="settings-group">
+            <label class="setting-label">Cor do relógio</label>
+            <input type="color" id="clockColor" value="#ffffff" class="color-picker">
+        </div>
+        
+        <div class="settings-group">
+            <label class="setting-label">Tamanho</label>
+            <select id="clockSize" class="select-input">
+                <option value="small">Pequeno</option>
+                <option value="medium" selected>Médio</option>
+                <option value="large">Grande</option>
+                <option value="xlarge">Extra Grande</option>
+            </select>
+        </div>
+        
+        <div class="settings-group">
+            <label class="setting-label">Posição inicial</label>
+            <select id="clockPosition" class="select-input">
+                <option value="top-left">Superior Esquerdo</option>
+                <option value="top-right" selected>Superior Direito</option>
+                <option value="bottom-left">Inferior Esquerdo</option>
+                <option value="bottom-right">Inferior Direito</option>
+            </select>
+        </div>
+        
+        <button id="saveBtn" class="save-button">Salvar Configurações</button>
+        
+        <div class="info">
+            <p>💡 Dica: Você pode arrastar o relógio para qualquer posição durante o vídeo</p>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 350px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    opacity: 0.9;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.settings-group {
+    margin-bottom: 20px;
+}
+
+.setting-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.setting-label input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.setting-label span {
+    cursor: pointer;
+}
+
+.color-picker {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px;
+    background: white;
+}
+
+.select-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    background: white;
+    color: #333;
+}
+
+.save-button {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #667eea;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+}
+
+.save-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.save-button:active {
+    transform: translateY(0);
+}
+
+.info {
+    margin-top: 20px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.9;
+}
